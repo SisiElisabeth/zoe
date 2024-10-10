@@ -1,11 +1,4 @@
 "use strict";
-const _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
 /**
 * @vue/shared v3.4.21
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -98,6 +91,37 @@ const looseToNumber = (val) => {
 let _globalThis;
 const getGlobalThis = () => {
   return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
+};
+const toDisplayString = (val) => {
+  return isString(val) ? val : val == null ? "" : isArray(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? JSON.stringify(val, replacer, 2) : String(val);
+};
+const replacer = (_key, val) => {
+  if (val && val.__v_isRef) {
+    return replacer(_key, val.value);
+  } else if (isMap(val)) {
+    return {
+      [`Map(${val.size})`]: [...val.entries()].reduce(
+        (entries, [key, val2], i) => {
+          entries[stringifySymbol(key, i) + " =>"] = val2;
+          return entries;
+        },
+        {}
+      )
+    };
+  } else if (isSet(val)) {
+    return {
+      [`Set(${val.size})`]: [...val.values()].map((v) => stringifySymbol(v))
+    };
+  } else if (isSymbol(val)) {
+    return stringifySymbol(val);
+  } else if (isObject(val) && !isArray(val) && !isPlainObject(val)) {
+    return String(val);
+  }
+  return val;
+};
+const stringifySymbol = (v, i = "") => {
+  var _a;
+  return isSymbol(v) ? `Symbol(${(_a = v.description) != null ? _a : i})` : v;
 };
 const SLOT_DEFAULT_NAME = "d";
 const ON_SHOW = "onShow";
@@ -440,9 +464,9 @@ function assertType$1(value, type) {
   let valid;
   const expectedType = getType$1(type);
   if (isSimpleType$1(expectedType)) {
-    const t = typeof value;
-    valid = t === expectedType.toLowerCase();
-    if (!valid && t === "object") {
+    const t2 = typeof value;
+    valid = t2 === expectedType.toLowerCase();
+    if (!valid && t2 === "object") {
       valid = value instanceof type;
     }
   } else if (expectedType === "Object") {
@@ -4182,21 +4206,21 @@ function injectHook(type, hook, target = currentInstance, prepend = false) {
     );
   }
 }
-const createHook = (lifecycle) => (hook, target = currentInstance) => (
+const createHook$1 = (lifecycle) => (hook, target = currentInstance) => (
   // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
   (!isInSSRComponentSetup || lifecycle === "sp") && injectHook(lifecycle, (...args) => hook(...args), target)
 );
-const onBeforeMount = createHook("bm");
-const onMounted = createHook("m");
-const onBeforeUpdate = createHook("bu");
-const onUpdated = createHook("u");
-const onBeforeUnmount = createHook("bum");
-const onUnmounted = createHook("um");
-const onServerPrefetch = createHook("sp");
-const onRenderTriggered = createHook(
+const onBeforeMount = createHook$1("bm");
+const onMounted = createHook$1("m");
+const onBeforeUpdate = createHook$1("bu");
+const onUpdated = createHook$1("u");
+const onBeforeUnmount = createHook$1("bum");
+const onUnmounted = createHook$1("um");
+const onServerPrefetch = createHook$1("sp");
+const onRenderTriggered = createHook$1(
   "rtg"
 );
-const onRenderTracked = createHook(
+const onRenderTracked = createHook$1(
   "rtc"
 );
 function onErrorCaptured(hook, target = currentInstance) {
@@ -6537,6 +6561,40 @@ function getCreateApp() {
     return my[method];
   }
 }
+function vFor(source, renderItem) {
+  let ret;
+  if (isArray(source) || isString(source)) {
+    ret = new Array(source.length);
+    for (let i = 0, l = source.length; i < l; i++) {
+      ret[i] = renderItem(source[i], i, i);
+    }
+  } else if (typeof source === "number") {
+    if (!Number.isInteger(source)) {
+      warn(`The v-for range expect an integer value but got ${source}.`);
+      return [];
+    }
+    ret = new Array(source);
+    for (let i = 0; i < source; i++) {
+      ret[i] = renderItem(i + 1, i, i);
+    }
+  } else if (isObject(source)) {
+    if (source[Symbol.iterator]) {
+      ret = Array.from(source, (item, i) => renderItem(item, i, i));
+    } else {
+      const keys = Object.keys(source);
+      ret = new Array(keys.length);
+      for (let i = 0, l = keys.length; i < l; i++) {
+        const key = keys[i];
+        ret[i] = renderItem(source[key], key, i);
+      }
+    }
+  } else {
+    ret = [];
+  }
+  return ret;
+}
+const f = (source, renderItem) => vFor(source, renderItem);
+const t = (val) => toDisplayString(val);
 function createApp$1(rootComponent, rootProps = null) {
   rootComponent && (rootComponent.mpType = "app");
   return createVueApp(rootComponent, rootProps).use(plugin);
@@ -7368,5 +7426,13 @@ const createSubpackageApp = initCreateSubpackageApp();
   wx.createPluginApp = global.createPluginApp = createPluginApp;
   wx.createSubpackageApp = global.createSubpackageApp = createSubpackageApp;
 }
-exports._export_sfc = _export_sfc;
+const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
+  !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
+};
+const onLaunch = /* @__PURE__ */ createHook(ON_LAUNCH);
 exports.createSSRApp = createSSRApp;
+exports.f = f;
+exports.index = index;
+exports.onLaunch = onLaunch;
+exports.ref = ref;
+exports.t = t;

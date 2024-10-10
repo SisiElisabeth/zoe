@@ -1,52 +1,33 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+	<view class="menu-page">
+        <!-- 顶部导航切换 -->
+		<view class="">
+		    
 		</view>
+        <view>
+            <text  v-for="(item,index) in menu" :key="index">{{item}}</text>
+        </view>
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+<script setup>
+    // import { buttonPosition } from '@/api/component.api.js';
+	import { ref } from 'vue';
 
-		},
-		methods: {
-
-		}
-	}
+    const menu = ref(['我的','对话','AI对话']);
+    // const {button_height, button_top, button_bottom} = buttonPosition();
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style lang="less">
+	page {
+        background-color: #f3f3f3;
+    }
+    .menu-page {
+        background: linear-gradient(#fce7cc,#f3f3f3);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 999;
+    }
 </style>

@@ -1,0 +1,11 @@
+page {
+  background-color: #f3f3f3;
+}
+.menu-page {
+  background: linear-gradient(#fce7cc, #f3f3f3);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
