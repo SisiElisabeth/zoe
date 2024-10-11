@@ -1,1 +1,2 @@
-# uniapp-ai-wechat-miniprogram
+# Zoe项目是uniapp搭建的小程序项目
+# 主要用于和智谱清言的大模型交互
