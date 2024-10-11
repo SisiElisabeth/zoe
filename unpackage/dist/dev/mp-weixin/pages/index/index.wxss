@@ -1,11 +1,31 @@
 page {
   background-color: #f3f3f3;
 }
-.menu-page {
+.menu-view {
   background: linear-gradient(#fce7cc, #f3f3f3);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 999;
+  height: var(--269153fc);
+}
+.menu-view .button-top {
+  height: var(--a5b07db8);
+}
+.menu-view .menu-style {
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  margin-top: var(--a5b07db8);
+  height: var(--303c4af8);
+  font-size: 32rpx;
+  color: #9d9486;
+  font-weight: 700;
+}
+.menu-view .menu-style text:nth-child(2) {
+  padding: 0 60rpx;
+}
+.menu-view-height {
+  height: var(--269153fc);
 }

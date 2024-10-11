@@ -3,6 +3,11 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 if (!Math) {
   "./pages/index/index.js";
+  "./pages/index/components/loading/loading.js";
+  "./pages/index/components/draw/draw.js";
+  "./pages/index/components/input/input.js";
+  "./pages/personalCenter/personalCenter.js";
+  "./pages/login/login.js";
 }
 const _sfc_main = {
   __name: "App",

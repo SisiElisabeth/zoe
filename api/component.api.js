@@ -1,22 +1,29 @@
-// import {reactive} from 'vue';
-// //获取胶囊按钮的位置
-// export const buttonPosition = () => {
-//     const buttonData = reactive({
-//         button_bottom = '0px',
-//         button_height = '0px',
-//         // button_left = '0px',
-//         // button_right = '0px',
-//         button_top = '0px',
-//         // button_width = '0px',
-//     });
-//     const {bottom, height, top} = uni.getStorageSync('buttonPosition')
-//     buttonData.button_bottom = bottom;
-//     buttonData.button_height = height;
-//     buttonData.button_top = top;
+import {reactive} from 'vue';
+//获取胶囊按钮的位置
+export const buttonPosition = () => {
+    const buttonData = reactive({
+        btn_bottom: '0px',
+        btn_height: '0px',
+        // btn_left: '0px',
+        // btn_right: '0px',
+        btn_top: '0px', 
+        // btn_width: ''0px',
+    });
+    const {bottom, height, top} = uni.getStorageSync('buttonPosition');
     
-//     return {
-//         button_bottom: buttonData.button_bottom,
-//         button_height: buttonData.button_height,
-//         button_top: buttonData.button_top
-//     };
+    buttonData.btn_bottom = `${bottom + 10}px`;
+    buttonData.btn_height = `${height}px`;
+    buttonData.btn_top = `${top}px`;
+    
+    return buttonData;
+    
+    // return {
+    //     btn_bottom: buttonData.btn_bottom,
+    //     btn_height: buttonData.btn_height,
+    //     btn_top: buttonData.btn_top
+    // };
+}
+
+// export const buttonPosition = () => {
+//     return uni.getStorageSync('buttonPosition');
 // }

@@ -1,0 +1,70 @@
+.modal-backdrop.data-v-7b035f71 {
+  position: fixed;
+  top: var(--68509d5d);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.modal-backdrop .personal-center.data-v-7b035f71 {
+  height: 100%;
+  width: 80%;
+  transform: translate(-80%, 0);
+  background-color: #f8f8f8;
+  animation: slideInForm-7b035f71 0.5s forwards;
+}
+@keyframes slideInForm-7b035f71 {
+from {
+    transform: translate(-80%, 0);
+}
+to {
+    transform: translate(0, 0);
+}
+}
+.modal-backdrop .personal-center .user-info.data-v-7b035f71 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.modal-backdrop .personal-center .user-info image.data-v-7b035f71 {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+.modal-backdrop .personal-center .user-info text.data-v-7b035f71 {
+  padding-top: 10rpx;
+  font-size: 35rpx;
+  font-weight: 700;
+}
+.modal-backdrop .personal-center .new-dialog.data-v-7b035f71 {
+  margin: 45rpx 20rpx;
+}
+.modal-backdrop .personal-center .history.data-v-7b035f71 {
+  margin: 30rpx 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid rgba(218, 218, 218, 0.6);
+}
+.modal-backdrop .personal-center .srcoll-height.data-v-7b035f71 {
+  height: 800rpx;
+}
+.modal-backdrop .personal-center .srcoll-height .history-list.data-v-7b035f71 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+.modal-backdrop .personal-center .srcoll-height .history-list text.data-v-7b035f71:nth-child(1) {
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.modal-backdrop .personal-center .srcoll-height .history-list text.data-v-7b035f71:nth-child(2) {
+  color: #9d9eab;
+  font-size: 26rpx;
+  padding-left: 20rpx;
+}

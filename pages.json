@@ -6,6 +6,41 @@
 				// "navigationBarTitleText": "uni-app"
                 "navigationStyle": "custom"
 			}
+		},
+		{
+		    "path" : "pages/index/components/loading/loading",
+		    "style" : 
+		    {
+		        "navigationBarTitleText" : ""
+		    }
+		},
+		{
+		    "path" : "pages/index/components/draw/draw",
+		    "style" : 
+		    {
+		        "navigationBarTitleText" : ""
+		    }
+		},
+		{
+		    "path" : "pages/index/components/input/input",
+		    "style" : 
+		    {
+		        "navigationBarTitleText" : ""
+		    }
+		},
+		{
+		    "path" : "pages/personalCenter/personalCenter",
+		    "style" : 
+		    {
+		        "navigationBarTitleText" : ""
+		    }
+		},
+		{
+		    "path" : "pages/login/login",
+		    "style" : 
+		    {
+		        "navigationBarTitleText" : ""
+		    }
 		}
 	],
 	"globalStyle": {

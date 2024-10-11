@@ -1,6 +1,11 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/index/components/loading/loading",
+    "pages/index/components/draw/draw",
+    "pages/index/components/input/input",
+    "pages/personalCenter/personalCenter",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarTextStyle": "black",
