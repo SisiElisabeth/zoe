@@ -17,7 +17,12 @@ const _sfc_main = {
       height: "0px"
     });
     const lineChange = (event) => {
-      const { detail: { height, lineCount } } = event;
+      const {
+        detail: {
+          height,
+          lineCount
+        }
+      } = event;
       textareaValue.alignItems = lineCount >= 2 ? "flex-end" : "center";
       textareaValue.autoHeight = lineCount >= 6 ? false : true;
       textareaValue.height = `${height}px`;

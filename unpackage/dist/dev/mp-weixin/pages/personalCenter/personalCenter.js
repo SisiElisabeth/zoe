@@ -8,7 +8,11 @@ const _sfc_main = {
     common_vendor.useCssVars((_ctx) => ({
       "68509d5d": common_vendor.unref(btn_bottom)
     }));
-    const { btn_height, btn_top, btn_bottom } = api_component_api.buttonPosition();
+    const {
+      btn_height,
+      btn_top,
+      btn_bottom
+    } = api_component_api.buttonPosition();
     return (_ctx, _cache) => {
       return {
         a: common_assets._imports_0$1,

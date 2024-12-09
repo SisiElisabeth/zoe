@@ -8,7 +8,7 @@
       </button>
       <form class="form-submit">
         <input type="nickname" class="weui-input" placeholder="请输入昵称" />
-        <button class="submit-btn" form-type="submit">登录</button>
+        <button class="submit-btn" form-type="submit" @click="login">登录</button>
       </form>
     </view>
   </view>
@@ -16,7 +16,13 @@
 </template>
 
 <script setup>
-
+  const login = () => {
+    uni.login({
+      success: res => {
+        console.log(res);
+      }
+    })
+  }
 </script>
 
 <style lang="less" scoped>

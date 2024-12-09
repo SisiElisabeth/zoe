@@ -1,1 +1,1 @@
-<view class="menu-view" style="{{b}}"><view class="menu-style"><text wx:for="{{a}}" wx:for-item="item" wx:key="b">{{item.a}}</text></view></view><view class="menu-view-height" style="{{c}}"></view><login-vue style="{{d}}" u-i="3d15c5f8-0" bind:__l="__l"></login-vue>
+<view class="menu-view" style="{{a}}"></view><view class="menu-view-height" style="{{b}}"></view><login-vue style="{{c}}" u-i="3d15c5f8-0" bind:__l="__l"></login-vue>

@@ -2,9 +2,9 @@
   <view class="menu-view">
     <!-- 顶部导航切换 -->
     <!-- <view class="button-top"></view> -->
-    <view class="menu-style">
+   <!-- <view class="menu-style">
       <text v-for="(item,index) in menu" :key="index">{{item}}</text>
-    </view>
+    </view> -->
   </view>
   <view class="menu-view-height"></view>
   <!-- <mineVue></mineVue> -->

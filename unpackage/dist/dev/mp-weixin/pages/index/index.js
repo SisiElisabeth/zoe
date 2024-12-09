@@ -13,19 +13,17 @@ const _sfc_main = {
       "a5b07db8": common_vendor.unref(btn_top),
       "303c4af8": common_vendor.unref(btn_height)
     }));
-    const menu = common_vendor.ref(["我的", "对话", "AI绘画"]);
-    const { btn_height, btn_top, btn_bottom } = api_component_api.buttonPosition();
+    common_vendor.ref(["我的", "对话", "AI绘画"]);
+    const {
+      btn_height,
+      btn_top,
+      btn_bottom
+    } = api_component_api.buttonPosition();
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.f(menu.value, (item, index, i0) => {
-          return {
-            a: common_vendor.t(item),
-            b: index
-          };
-        }),
+        a: common_vendor.s(_ctx.__cssVars()),
         b: common_vendor.s(_ctx.__cssVars()),
-        c: common_vendor.s(_ctx.__cssVars()),
-        d: common_vendor.s(_ctx.__cssVars())
+        c: common_vendor.s(_ctx.__cssVars())
       };
     };
   }
