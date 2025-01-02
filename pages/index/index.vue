@@ -2,9 +2,9 @@
   <view class="menu-view">
     <!-- 顶部导航切换 -->
     <!-- <view class="button-top"></view> -->
-   <!-- <view class="menu-style">
+   <view class="menu-style">
       <text v-for="(item,index) in menu" :key="index">{{item}}</text>
-    </view> -->
+    </view>
   </view>
   <view class="menu-view-height"></view>
   <!-- <mineVue></mineVue> -->
@@ -13,11 +13,11 @@
   <!-- 绘图组件 -->
   <!-- <drawVue></drawVue> -->
   <!-- 底部输入框 -->
-  <!-- <inputVue></inputVue> -->
+  <inputVue></inputVue>
   <!-- 个人中心 -->
   <!-- <personalCenterVue></personalCenterVue> -->
   <!-- 登录 -->
-  <loginVue></loginVue>
+  <!-- <loginVue></loginVue> -->
 
 </template>
 

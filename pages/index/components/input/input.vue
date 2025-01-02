@@ -3,18 +3,27 @@
     <image @click="showText =!showText" :src="showText? '/static/voice.svg' : '/static/keyboard.svg'" mode="widthFix">
     </image>
     <view class="input-content" v-show="showText" id="input-content">
-      <textarea class="textarea-box" :show-confirm-bar="false" :fixed="true" :auto-height="textareaValue.autoHeight"
-        placeholder="你有什么想知道的,快来问我" maxlength="500" cursor-spacing="20" @linechange="lineChange"></textarea>
+      <textarea 
+        class="textarea-box" 
+        :show-confirm-bar="false" 
+        :fixed="true" 
+        :auto-height="textareaValue.autoHeight"
+        placeholder="你有什么想知道的,快来问我" 
+        maxlength="500" 
+        cursor-spacing="20" 
+        @linechange="lineChange"
+        v-model="inputContent"
+      ></textarea>
     </view>
     <view class="speech-sound" v-show="!showText">按住 说话</view>
-    <image src="/static/send.svg" mode="widthFix"></image>
+    <image src="/static/send.svg" mode="widthFix" @click="sendIng"></image>
   </view>
   <!-- 录制语音弹窗 -->
-  <view class="mask-view"></view>
-  <view class="record-text">
+  <view class="mask-view" v-if="!showText"></view>
+  <view class="record-text" v-if="!showText">
     111111111
   </view>
-  <view class="record-pop-up">
+  <view class="record-pop-up" v-if="!showText">
     <text class="text release">松开 发送</text>
     <text class="text in-recognition">正在识别声音...</text>
     <view class="audio-wave">
@@ -32,7 +41,8 @@
   } from 'vue';
   import {
     onLaunch
-  } from '@dcloudio/uni-app'
+  } from '@dcloudio/uni-app';
+  import { chatbotMessage, inProgress } from '@/store/index.js';
   // 切换键盘输入还是语音合成
   const showText = ref(true);
   const instance = getCurrentInstance();
@@ -65,7 +75,16 @@
   const barData = ref([
     '1s', '0.9s', '0.8s', '0.7s', '0.6s', '0.5s', '0.4s', '0.3s', '0.2s', '0.1s',
     '1s', '0.9s', '0.8s', '0.7s', '0.6s', '0.5s', '0.4s', '0.3s', '0.2s', '0.1s',
-  ])
+  ]);
+  // 输入框的值
+  const inputContent = ref('');
+  // 发送
+  const sendIng = () => {
+    if(!inputContent.value.trim()) return; 
+    if(inProgress().queryValue()) return;
+    chatbotMessage().startSending(inputContent.value);
+    console.log(inputContent.value);
+  }
 </script>
 
 <style lang="less" scoped>

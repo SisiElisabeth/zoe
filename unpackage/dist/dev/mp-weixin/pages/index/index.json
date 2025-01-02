@@ -1,5 +1,0 @@
-{
-  "usingComponents": {
-    "login-vue": "../login/login"
-  }
-}
